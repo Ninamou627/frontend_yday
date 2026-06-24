@@ -1,16 +1,82 @@
-# React + Vite
+# HumanAI - Plateforme RH & Management (Frontend)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Ce dépôt contient le code source du frontend de l'application **HumanAI** (Projet Ydays 2026), une plateforme SaaS de gestion des ressources humaines, du bien-être au travail (QVT) et d'assistance basée sur l'intelligence artificielle.
 
-Currently, two official plugins are available:
+## 🚀 Fonctionnalités principales
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+L'application est découpée en plusieurs modules adaptés à différents rôles utilisateurs :
 
-## React Compiler
+- **Collaborateur** : Dashboard personnel, assistant IA, intégration (onboarding), documents, et sondages.
+- **Manager** : Alertes de sécurité/management, validations de demandes, assistant IA pour les managers.
+- **Ressources Humaines (RH)** : Gestion de l'annuaire, cycle de vie (onboarding/offboarding), validations des documents et processus.
+- **Qualité de Vie au Travail (QVT)** : Suivi du bien-être, analyses de sentiment, sondages (pulse), et recommandations.
+- **Exécutif (Executive)** : Tableaux de bord de haut niveau, rapports et sandbox stratégique.
+- **Administrateur Système (Sysadmin)** : Gestion des rôles et permissions (RBAC), base de connaissances RAG, paramètres de sécurité.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠️ Stack Technique
 
-## Expanding the ESLint configuration
+- **Framework** : [React](https://react.dev/) 19 (via [Vite](https://vitejs.dev/))
+- **Routage** : React Router DOM
+- **Style** : [Tailwind CSS](https://tailwindcss.com/)
+- **Icônes** : Lucide React
+- **Appels API** : Axios
+- **Notifications** : React Hot Toast
+- **Authentification** : Mixte (Native & Firebase)
+- **Rendu Markdown/PDF** : react-markdown, html2pdf.js
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 📁 Structure du projet
+
+```text
+src/
+├── assets/         # Images, logos, etc.
+├── components/     # Composants réutilisables (ex: Sidebar, boutons)
+├── context/        # Contextes globaux (ex: AuthContext)
+├── services/       # Configuration API et Firebase (api.js, firebase.js, useApi.js)
+└── views/          # Pages de l'application classées par rôle
+    ├── auth/       # Pages d'authentification
+    ├── collaborator/
+    ├── executive/
+    ├── hr/
+    ├── manager/
+    ├── qvt/
+    └── sysadmin/
+```
+
+## ⚙️ Installation et lancement local
+
+### Prérequis
+- [Node.js](https://nodejs.org/) (version 18+ recommandée)
+- Un backend configuré et en cours d'exécution (sur `http://localhost:8000` par défaut).
+
+### Étapes
+
+1. **Cloner le dépôt** (ou accéder au dossier) :
+   ```bash
+   git clone https://github.com/Ninamou627/frontend_yday.git
+   cd frontend_yday
+   ```
+
+2. **Installer les dépendances** :
+   ```bash
+   npm install
+   ```
+
+3. **Configurer les variables d'environnement** :
+   Copiez ou créez un fichier `.env` à la racine du projet avec les variables nécessaires (par exemple l'URL de l'API backend et les clés Firebase).
+   ```env
+   VITE_API_URL=http://localhost:8000
+   # ... autres variables Firebase
+   ```
+
+4. **Lancer le serveur de développement** :
+   ```bash
+   npm run dev
+   ```
+   L'application sera accessible sur `http://localhost:5173`.
+
+## 📜 Scripts disponibles
+
+- `npm run dev` : Lance le serveur de développement avec HMR.
+- `npm run build` : Compile l'application pour la production.
+- `npm run lint` : Vérifie les erreurs de linting avec ESLint.
+- `npm run preview` : Prévisualise la version de production en local.
